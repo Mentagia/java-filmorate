@@ -72,7 +72,7 @@ public class UserController {
     }
 
     private void checkSpace(String login) {
-        if (login.contains(" ")){
+        if (login.contains(" ")) {
             log.error("Логин содержит пробел");
             throw new ValidationException("Логин содержит пробел");
         }
