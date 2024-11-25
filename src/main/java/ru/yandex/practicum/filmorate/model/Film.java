@@ -6,15 +6,19 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Positive;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Value;
+
 
 import java.time.LocalDate;
 
-@Data
+import java.util.HashSet;
+import java.util.Set;
+
+@Value
 @Builder(toBuilder = true)
 public class Film {
     private Long id;
-
+    Set<Long> likes = new HashSet<>();;
     @NotBlank
     private String name;
     @Size(max = 200)

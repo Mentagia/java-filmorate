@@ -3,8 +3,12 @@ package ru.yandex.practicum.filmorate.controllerTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.yandex.practicum.filmorate.controller.UserController;
+import ru.yandex.practicum.filmorate.exception.NotFoundException;
 import ru.yandex.practicum.filmorate.exception.ValidationException;
 import ru.yandex.practicum.filmorate.model.User;
+import ru.yandex.practicum.filmorate.service.UserService;
+import ru.yandex.practicum.filmorate.storage.InMemoryUserStorage;
+import ru.yandex.practicum.filmorate.storage.UserStorage;
 
 import java.time.LocalDate;
 
@@ -12,7 +16,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class UserControllerTest {
     static UserController userController;
-
+    static UserStorage userStorage = new InMemoryUserStorage();
+    static UserService userService = new UserService(userStorage);
     User user = User.builder()
             .email("email@test.ru")
             .login("Login")
@@ -22,7 +27,7 @@ public class UserControllerTest {
 
     @BeforeEach
     public void start() {
-        userController = new UserController();
+        userController = new UserController(userService,userStorage);
     }
 
     @Test
@@ -60,7 +65,7 @@ public class UserControllerTest {
 
        User newUser = user.toBuilder().id(3L).login("Login234").build();
 
-       assertThrows(ValidationException.class, () -> userController.putUser(newUser));
+       assertThrows(NotFoundException.class, () -> userController.putUser(newUser));
     }
 
     @Test
