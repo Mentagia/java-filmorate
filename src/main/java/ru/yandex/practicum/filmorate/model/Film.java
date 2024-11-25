@@ -18,7 +18,7 @@ import java.util.Set;
 @Builder(toBuilder = true)
 public class Film {
     private Long id;
-    Set<Long> likes = new HashSet<>();;
+    Set<Long> likes = new HashSet<>();
     @NotBlank
     private String name;
     @Size(max = 200)
