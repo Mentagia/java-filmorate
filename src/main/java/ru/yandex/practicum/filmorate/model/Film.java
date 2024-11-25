@@ -17,15 +17,15 @@ import java.util.Set;
 @Value
 @Builder(toBuilder = true)
 public class Film {
-    private Long id;
+    Long id;
     Set<Long> likes = new HashSet<>();
     @NotBlank
-    private String name;
+    String name;
     @Size(max = 200)
-    private String description;
+    String description;
     @NotNull
     @PastOrPresent
-    private LocalDate releaseDate;
+    LocalDate releaseDate;
     @Positive
-    private int duration;
+    int duration;
 }

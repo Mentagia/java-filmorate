@@ -1,6 +1,5 @@
 package ru.yandex.practicum.filmorate.service;
 
-import com.sun.tools.jconsole.JConsoleContext;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -113,7 +112,7 @@ public class UserService {
 
         if (userId == friendUserId) {
             log.error("Ошибка: Id пользователя {} равен id друга {}", userId, friendUserId);
-            throw new ValidationException("Id пользователя: " + userId  + " идентичен Id друга: "+ friendUserId);
+            throw new ValidationException("Id пользователя: " + userId  + " идентичен Id друга: " + friendUserId);
         }
 
         Optional<User> user = storage.findUser(userId);

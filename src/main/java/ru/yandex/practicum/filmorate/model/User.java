@@ -16,15 +16,15 @@ import java.util.Set;
 @Value
 @Builder(toBuilder = true)
 public class User {
-    private Long id;
+    Long id;
     @NotBlank
     @Email
-    private String email;
+    String email;
     @NotBlank
-    private String login;
-    private String name;
+    String login;
+    String name;
     @NotNull
     @PastOrPresent
-    private LocalDate birthday;
-    private Set<Long> friendsId = new HashSet<>();
+    LocalDate birthday;
+    Set<Long> friendsId = new HashSet<>();
 }
