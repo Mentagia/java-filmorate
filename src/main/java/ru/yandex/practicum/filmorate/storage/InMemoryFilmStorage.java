@@ -16,7 +16,7 @@ import java.util.Optional;
 
 @Slf4j
 @Component
-public class InMemoryFilmStorage implements FilmStorage{
+public class InMemoryFilmStorage implements FilmStorage {
     private final Map<Long, Film> films = new HashMap<>();
     private long currentId = 1;
 

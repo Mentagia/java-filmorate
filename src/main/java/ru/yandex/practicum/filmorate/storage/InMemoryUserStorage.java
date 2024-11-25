@@ -14,7 +14,7 @@ import java.util.Optional;
 
 @Slf4j
 @Component
-public class InMemoryUserStorage implements UserStorage{
+public class InMemoryUserStorage implements UserStorage {
     private final Map<Long, User> users = new HashMap<>();
     private long currentId = 1;
 
