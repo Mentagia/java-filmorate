@@ -17,12 +17,12 @@ import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.*;
 
 class FilmControllerTest {
-    static FilmStorage filmStorage = new InMemoryFilmStorage();
-    static UserStorage userStorage = new InMemoryUserStorage();
-    static FilmService filmService = new FilmService(filmStorage,userStorage);
+
+
     static FilmController filmController;
 
     Film film = Film.builder()
+                .id(1L)
                 .name("filmName")
                 .description("filmDescription")
                 .releaseDate(LocalDate.of(2000, 1, 26))
@@ -31,6 +31,9 @@ class FilmControllerTest {
 
     @BeforeEach
     public void start() {
+        FilmStorage filmStorage = new InMemoryFilmStorage();
+        UserStorage userStorage = new InMemoryUserStorage();
+        FilmService filmService = new FilmService(filmStorage,userStorage);
         filmController = new FilmController(filmService, filmStorage);
     }
 

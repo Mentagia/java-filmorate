@@ -16,9 +16,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class UserControllerTest {
     static UserController userController;
-    static UserStorage userStorage = new InMemoryUserStorage();
-    static UserService userService = new UserService(userStorage);
+
     User user = User.builder()
+            .id(1L)
             .email("email@test.ru")
             .login("Login")
             .name("Name")
@@ -27,6 +27,8 @@ public class UserControllerTest {
 
     @BeforeEach
     public void start() {
+        UserStorage userStorage = new InMemoryUserStorage();
+        UserService userService = new UserService(userStorage);
         userController = new UserController(userService,userStorage);
     }
 
