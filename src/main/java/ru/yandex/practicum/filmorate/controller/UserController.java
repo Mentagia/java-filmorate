@@ -14,6 +14,7 @@ import java.util.Map;
 @RequestMapping("/users")
 public class UserController {
     private final Map<Long, User> users = new HashMap<>();
+    private long currentId = 1;
 
     @GetMapping
     public Collection<User> getUsers() {
@@ -79,11 +80,15 @@ public class UserController {
     }
 
     private long getNextId() {
+        return currentId++;
+    }
+
+    /*private long getNextId() {
         long currentMaxId = users.keySet()
                 .stream()
                 .mapToLong(id -> id)
                 .max()
                 .orElse(0);
         return ++currentMaxId;
-    }
+    }*/
 }

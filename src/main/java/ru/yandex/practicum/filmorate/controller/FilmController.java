@@ -16,6 +16,7 @@ import java.util.Map;
 @RequestMapping("/films")
 public class FilmController {
     private final Map<Long, Film> films = new HashMap<>();
+    private long currentId = 1;
 
     @GetMapping
     public Collection<Film> getFilms() {
@@ -66,12 +67,16 @@ public class FilmController {
     }
 
     private long getNextId() {
+        return currentId++;
+    }
+
+    /*private long getNextId() {
         long currentMaxId = films.keySet()
                 .stream()
                 .mapToLong(id -> id)
                 .max()
                 .orElse(0);
         return ++currentMaxId;
-    }
+    }*/
 
 }
